@@ -2,6 +2,19 @@
   .video-popup br {
     display: none;
   }
+  .masonry-isotope .item-5 .content, .masonry-isotope .item-6 .content, .masonry-isotope .item-7 .content, .masonry-isotope .item-9 .content, .masonry-isotope .item-11 .content {
+    bottom: 30px;
+  }
+  .masonry-isotope .content h5.title_1 {
+    font-size: 34px;
+  }
+  .masonry-isotope .content h5.title_2 {
+    font-size: 28px;
+  }
+  .masonry-isotope .content h5.title_1 {
+    font-size: 34px;
+    line-height: 44px;
+  }
 }
 
 @media (max-width: 1366px) {
@@ -86,6 +99,9 @@
   }
   .t4s-header {
     padding-top: 20px;
+  }
+  .t4s-nav-down .t4s-header .section-inner{
+    padding:15px 0;
   }
   .t4s-header .logo img {
     width: 150px;
@@ -519,6 +535,11 @@
     margin-bottom: 0;
     font-size: 16px;
     line-height: 24px;
+  }
+  .ecomposer p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 0px;
   }
   .hero_image .section-inner > * {
     padding: 0 15px;

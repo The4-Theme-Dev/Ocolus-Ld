@@ -1,12 +1,17 @@
 $(document).ready(function () {
   // count down top bar
-  $("#countdown").countdown("2023/11/10", function (event) {
+  
+  var fiveSeconds = '2023/12/30'
+  $("#countdown").countdown(fiveSeconds).on('update.countdown', function (event) {
     $(this).html(
       event.strftime(
         "<div><span>%D</span> <span>Days</span></div> <div><span>%H</span> <span>Hours</span></div> <div><span>%M</span> <span>Mins</span></div> <div><span>%S</span> <span>Secs</span></div>"
-      )
+      ),
     );
-  });
+  }).on('finish.countdown', function (event) {
+    $('header .t4s-topbar').hide();
+  });;
+  
   $(document).on("click", "#topbar_close", function () {
     $(".t4s-topbar ").slideToggle();
   });
@@ -52,7 +57,7 @@ $(document).ready(function () {
   $(".install-ec").click(function (e) {
     e.preventDefault();
     window.open(
-      `https://ecomposer.app/install?shop=${$("#input_install").val()}`,
+      ` https://apps.shopify.com/ecomposer?utm_source=ocolus&utm_medium=TFlanding=${$("#input_install").val()}`,
       "_blank"
     );
   });
@@ -143,6 +148,42 @@ $(document).ready(function () {
   $(document).on("click", ".back-to-top", function () {
     $(window).scrollTop(0);
   });
+ 
+  // header sticky
+  let stickyNavTop = $('header .t4s-header').offset().top;
+  let topbarHeight = $("header .t4s-topbar").outerHeight();
+  let lastScrollTop = 0;
+  
+  const stickyNav = function(){
+    let scrollTop = $(window).scrollTop();
+    let st = $(this).scrollTop(); // our current vertical position from the top
+    // otherwise change it back to relative
+    if (scrollTop < stickyNavTop) { 
+        $('header .t4s-header').removeClass('sticky'); 
+    }
+    if (st > lastScrollTop && st > stickyNavTop ) {
+      // Scroll Down
+      $("header .t4s-header").removeClass("t4s-nav-down").addClass('sticky').addClass("t4s-nav-up");
+    }
+    else {
+      // Scroll Up
+      if (st + $(window).height() < $(document).height()) {
+        $("header .t4s-header").removeClass("t4s-nav-up").addClass("t4s-nav-down");
+        $(".nav-list").hide();
+      }
+      if( st <= topbarHeight){
+        $("header .t4s-header").removeClass("t4s-nav-down")
+      }
+      
+    }
+    lastScrollTop = st;
+  };
+  stickyNav();
+  // and run it again every time you scroll
+  $(window).scroll(function() {
+    stickyNav();
+  });
+
 
   // zoom image
 

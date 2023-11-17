@@ -81,12 +81,45 @@
 }
 
 /* header */
+#header{
+position: relative;
+left: 0;
+right: 0;
+top: 0;
+z-index: 999;
+transition: all 0.15s linear;
+}
 .t4s-header {
   padding-top: 32px;
-  position: absolute;
+  position: relative;
+}
+.t4s-nav-up {
+  transform: translateY(-100%);
+}
+.sticky{
+  position: fixed;
+  width: 100%;
   left: 0;
-  right: 0;
-  z-index: 999;
+  top: 0;
+  z-index: 100;
+  transition: all 0.15s linear;
+}
+.t4s-header.t4s-nav-down {
+  /* transform: translateY(-82px); */
+  background-color: #fff;
+  box-shadow: 0px 1px 1px 0px #00000020;
+}
+.t4s-header.t4s-nav-up .lm-bar-load{
+  transform: translateY(2px);
+}
+.t4s-nav-down.t4s-header{
+  padding: 0;
+}
+.t4s-nav-down.t4s-header .section-inner{
+  padding:20px 0;
+}
+.t4s-nav-down .lm-bar-load,.t4s-nav-up .lm-bar-load{
+  position: sticky;
 }
 .t4s-header ul {
   list-style: none;
@@ -668,6 +701,14 @@ main .banner::after {
   font-weight: 600;
   line-height: 32px;
   margin-bottom: 30px;
+  color: #293341;
+}
+.ecomposer p {
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 20px;
   color: #293341;
 }
 .ecomposer .eco-ico {
